@@ -22,6 +22,8 @@ console.log();
  * La función retornada debe mostrar un mensaje simple en consola al ser ejecutada.
  */
 // 1. Crea una función que retorne a otra función
+
+
 console.log();
 console.log('<----------------------------------------->');
 console.log('<----1. Crea una función que retorne a otra función----->');
@@ -34,10 +36,12 @@ const mensaje = function (){
 }
 function funcionRetorno(){
 
-    return mensaje();
+    return mensaje;
 }
 
 const recibiendoMensaje = funcionRetorno();
+
+recibiendoMensaje()
 
 
 
@@ -166,10 +170,60 @@ console.log();
 /**
  * Implementa una función llamada sumManyTimes que reciba dos argumentos: un multiplicador 
  * y una cantidad indefinida de números mediante el operador Rest. La función debe sumar 
- * todos los números recibidos y, finalmente, multiplicar ese total por el valor del primer argumento.
+ * todos los números recibidos y, finalmente, multiplicar ese total por el valor del primer 
+ * argumento.
  */
 // 5. Crea una función sumManyTimes(multiplier, ...numbers) que primero sume todos los números (usando parámetros Rest) y luego multiplique el resultado por multiplier
 
+
+console.log();
+console.log('<----------------------------------------->');
+console.log('<---5. Crea una función sumManyTimes(multiplier, ...numbers) que primero sume todos los números (usando parámetros Rest) y luego multiplique el resultado por multiplier------>');
+
+
+function sumManyTimes(multiplicador, ...numeros){
+
+    let suma = 0;
+
+    for (let i = 0; i < numeros.length; i++){
+
+        suma += numeros[i];
+
+    }
+
+    return multiplicador*suma;
+
+}
+
+console.log();
+console.log(`el resultado de la función es de : ${sumManyTimes(2, 1,2,3,)}`);
+console.log();
+
+// se realiza este mismo ejercicio pero utilizando funciones parciales
+
+function multiplicadora (facMultiplicador){
+    return function sumadora(...parametros){
+        
+        let valoresSumados = 0;
+
+        let i = 0;
+
+        while (i < parametros.length){
+
+            valoresSumados += parametros[i];
+
+            i++;
+        }
+
+        return facMultiplicador * valoresSumados;
+    }    
+}
+
+const funcionMultiplicadora = multiplicadora(2)
+
+
+console.log('<-------------------------------------------->');
+console.log(`EL RESULTADO DEL EJERCICIO 5 PERO UTILIZANDO FUNCIONES PARCIALES ES DE: ${funcionMultiplicadora(1,2)}`);
 
 
 
@@ -181,12 +235,80 @@ console.log();
 // 6. Crea un Callback que se invoque con el resultado de la suma de todos los números que se le pasan a una función
 
 
+console.log();
+console.log('<----------------------------------------->');
+console.log('<----Crea un Callback que se invoque con el resultado de la suma de todos los números que se le pasan a una función----->');
+
 /**
- * Crea una función base que reciba dos parámetros. A partir de ella, genera una función parcial (utilizando el método .
- * bind o una clausura) que fije el primer parámetro con un valor constante, permitiendo que la nueva función solo 
- * requiera el segundo parámetro para ejecutarse.
+ * Esta seria mi función callback y el parámetro vendría de la función principal
+ * @param {*} resultado 
+ */
+function mostrarResultados(resultado){
+
+    console.log();
+    console.log(`El resultado de la suma de todos los valores es de: ${resultado}`);
+    console.log();
+}
+
+function procesarSumaNumeros(callback, ...valores){
+
+    let sumaValores = 0;
+
+    let i = 0;
+
+    while (i < valores.length){
+
+        sumaValores += valores[i];
+
+        i++;
+    }
+
+    callback(sumaValores);
+}
+
+
+
+procesarSumaNumeros(mostrarResultados, 1,2,3,4,100);
+
+
+
+
+
+/**
+ * Crea una función base que reciba dos parámetros. A partir de ella, genera una función parcial 
+ * (utilizando el método .bind o una clausura) que fije el primer parámetro con un valor 
+ * constante, permitiendo que la nueva función solo requiera el segundo parámetro para ejecutarse.
  */
 // 7. Desarrolla una función parcial
+
+
+console.log();
+console.log('<----------------------------------------->');
+console.log('<----7. Desarrolla una función parcial----->');
+
+
+function funcionBase(dato1, dato2){
+    
+    const valorPrivado = dato1;
+
+    return function (nuevoDato2){
+        const valorAUsar = nuevoDato2 || dato2;
+        return valorPrivado * valorAUsar;
+    }
+}
+
+const calculo = funcionBase(4,8);
+
+console.log();
+console.log(`el resultado de la función base seria de: ${calculo()}`);
+console.log();
+console.log(`resultado con la aplicación parcial: ${calculo(10)}`);
+console.log();
+console.log(`intentando de acceder al dato privado: ${calculo.valorPrivado}`);
+console.log();
+
+
+
 
 
 /**
@@ -197,12 +319,43 @@ console.log();
 // 8. Implementa un ejemplo que haga uso de Spread
 
 
+console.log();
+console.log('<----------------------------------------->');
+console.log('<----8. Implementa un ejemplo que haga uso de Spread----->');
+
+const arregloNumeros1 = [1,2,3,4];
+
+const arregloNumeros2 = [20,23,24,22];
+
+const arregloNuevo = [...arregloNumeros1,...arregloNumeros2];
+
+
+console.log();
+console.log('arreglo nuevo: ', arregloNuevo);
+console.log();
+
+
+
+
+
 /**
- * Escribe una función de flecha (arrow function) de una sola línea que reciba un valor numérico y 
- * devuelva su cuadrado (multiplicado por sí mismo) haciendo uso de la sintaxis de retorno 
+ * Escribe una función de flecha (arrow function) de una sola línea que reciba un valor numérico 
+ * y devuelva su cuadrado (multiplicado por sí mismo) haciendo uso de la sintaxis de retorno 
  * implícito (sin el uso de llaves {} ni la palabra return).
  */
 // 9. Implementa un retorno implícito
+
+
+console.log();
+console.log('<----------------------------------------->');
+console.log('<-----9. Implementa un retorno implícito---->');
+
+
+const valorCuadrado = (dato) => dato*dato
+
+console.log();
+console.log(`EL VALOR CUADRADO DE 2 ES:${valorCuadrado(8)}`);
+console.log();
 
 
 /**
@@ -211,3 +364,37 @@ console.log();
  * demostrando cómo la función de flecha captura el contexto léxico de su entorno padre.
  */
 // 10. Haz uso del this léxico
+
+
+
+console.log();
+console.log('<----------------------------------------->');
+console.log('<----10. Haz uso del this léxico----->');
+
+class ServicioCarro{
+    constructor(kilometro){
+        this.kilometro = kilometro;
+    }
+    servicio(){
+
+        setTimeout(() => {
+
+            console.log();
+            console.log(`El carro después de ${this.kilometro} kilómetros necesita servicio`);
+            console.log();
+            
+        }, 500);
+        
+    }
+}
+
+const mantenimiento = new ServicioCarro(200);
+
+
+mantenimiento.servicio();
+
+
+
+
+
+
