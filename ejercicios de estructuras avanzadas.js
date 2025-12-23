@@ -68,11 +68,16 @@ let aplicarRecargo = productosSeleccionados.map(recargo => {
 });
 
 console.log();
-console.log('lista de productos seleccionados con un costo mayores a 15: ',aplicarRecargo);
+console.log('lista de productos aplicando el recargo del 15%: ',aplicarRecargo);
 console.log();
 
 
-let totalVentas = aplicarRecargo.reduce((acumulado, valorActual) => acumulado +=valorActual)
+let totalVentas = aplicarRecargo.reduce((acumulado, valorActual) => {
+    
+    return acumulado +=valorActual;
+
+
+},0);
 
 console.log();
 console.log(`el total de ventas es de: ${totalVentas}`);
@@ -190,13 +195,13 @@ console.log('<-----4. Ordena un array de números de mayor a menor---->');
 
 const datos_ejercicio_4 = [45, 12, 89, 2, 34, 7, 100];
 
-const ordenDescendente = datos_ejercicio_4.sort((a,b)=> b+a)
+const ordenDescendente = datos_ejercicio_4.sort((a,b)=> b-a)
 
 
 console.log();
 console.log('lista para ordenar: ',datos_ejercicio_4);
 console.log();
-console.log('lista en orden descendente: ',ordenDescendente);
+console.log('lista en orden mayor a menor: ',ordenDescendente);
 console.log();
 
 
@@ -228,13 +233,13 @@ console.log('DE set_a:', set_a);
 console.log('DE set_a:', set_b);
 console.log();
 
-const unionSets = new Set([...set_a],[...set_b])
+const unionSets = new Set([...set_a, ...set_b])
 
 
 console.log();
 console.log('valores únicos: ',unionSets);
 console.log();
-console.log('mostrando los valores unicos en un arreglo: ',[...unionSets]);
+console.log('mostrando los valores únicos en un arreglo: ',[...unionSets]);
 console.log();
 
 
