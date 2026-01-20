@@ -1,6 +1,6 @@
 
 /*
-FORMA DE HACERLO MAS RAPIDO Y SENCILLO
+FORMA DE HACERLO MAS RÁPIDO Y SENCILLO
 function palabraAnagrama (dato1, dato2) {
 
     if (dato1.length !== dato2.length){

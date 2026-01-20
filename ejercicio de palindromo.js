@@ -6,10 +6,10 @@ function entradaDato(dato){
     // Normalización para eliminar acentos (Ej: á -> a)
     let datoNormalizado = dato.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-    let datoTransformado = datoNormalizado.toLowerCase().replace(patronSimbolos, "");;
+    let datoTransformado = datoNormalizado.toLowerCase().replace(patronSimbolos, "");
 
-    //let patronPalabrasAcentuadas = /[áÁéÉíÍóÓÚu]/g
-    //let patronPalabrasAcentuadas = /[áéíóu]/gi //Con este patrón se contemplan las mayúsculas
+    //let patrónPalabrasAcentuadas = /[áÁéÉíÍóÓÚu]/g
+    //let patrónPalabrasAcentuadas = /[áéíóu]/gi //Con este patrón se contemplan las mayúsculas
     //datoTransformado = datoTransformado.replace(patronSimbolos, "");
 
     return datoTransformado
@@ -28,6 +28,9 @@ function comparacionPalabra( dato3, dato4){
     let arregloDato3 = dato3.split(' ')
     let arregloDato4 = dato4.split(' ')
 
+    //console.log(arregloDato3);
+    //console.log(arregloDato4);
+
     let resultado = true;
 
     arregloDato3.forEach((elemento, indice ) => {
@@ -44,7 +47,7 @@ function comparacionPalabra( dato3, dato4){
 }
 
 
-let palabra = 'Isaac no ronca así.'
+let palabra = 'Ana'
 
 let datoTransformado = entradaDato(palabra)
 
