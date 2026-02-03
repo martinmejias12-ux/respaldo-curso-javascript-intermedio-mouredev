@@ -83,11 +83,43 @@ console.log();
 /**
  * Getters y Setters: Crea un objeto perfilUsuario que tenga una propiedad privada _edad inicializada en 25. 
  * Define un get para leerla y un set que valide que el nuevo valor sea un número positivo antes 
- * de actualizar la 
- * propiedad.
+ * de actualizar la propiedad.
  */
 // 4. Haz uso de get y set en un objeto
 
+let perfilUsuario = {
+    _edad : 25,
+
+    get edad(){
+        return this._edad
+    },
+
+    set edad (dato){
+
+        if (typeof dato === 'number' && dato > 0){
+            this._edad = dato;
+        }else{
+            console.log('Error: el dato debe ser un numero positivo');
+        }
+
+    }
+
+}
+
+
+console.log();
+console.log('<----------------4. Haz uso de get y set en un objeto--------------------------------->');
+console.log();
+
+let obtenerDato = perfilUsuario.edad;
+
+console.log(`El dato privado de la edad: ${obtenerDato}`);
+
+perfilUsuario.edad = 35;
+
+let obtenerDatoModificado = perfilUsuario.edad;
+
+console.log(`El dato privado de la edad modificado:  ${obtenerDatoModificado}`);
 
 
 /**
