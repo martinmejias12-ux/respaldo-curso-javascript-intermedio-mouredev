@@ -62,7 +62,7 @@ console.log('*******************************************************************
     Paso 4: Comparar la cadena original con la invertida y devolver un valor booleano (true/false).
  */
 
-let palabra = 'rosa';
+let palabra = 'AnA';
 
 let palabraMinuscula = palabra.toLowerCase();
 
